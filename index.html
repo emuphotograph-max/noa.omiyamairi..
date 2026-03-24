@@ -1,5 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Camera, Heart, Instagram, MessageCircle, ChevronDown, Clock, MapPin, Info, BookOpen, Home } from 'lucide-react';
+import { Camera, Heart, Instagram, MessageCircle, Clock, MapPin, BookOpen, Home } from 'lucide-react';
+
+/**
+ * お宮参りフォトグラファー向け LP 完全版テンプレート
+ * すべてのコンテンツ（FAQ, Instagram, 料金詳細）を復元しました。
+ */
+
+const LINE_LINK = "https://lin.ee/rlTm2kM";
+
+// 画像URLをここに入れると反映されます
+const IMAGES = {
+  hero: "", 
+  gallery1: "", 
+  gallery2: "",
+  gallery3: "",
+};
 
 const App = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -14,6 +29,13 @@ const App = () => {
     color: '#5D4037',
   };
 
+  const Placeholder = ({ text, aspect = "aspect-video" }) => (
+    <div className={`w-full ${aspect} bg-gray-200 border-2 border-dashed border-gray-300 flex flex-col items-center justify-center text-gray-400 rounded-[30px] p-4 text-center`}>
+      <Camera size={32} className="mb-2 opacity-20" />
+      <span className="text-[10px] leading-relaxed">{text}</span>
+    </div>
+  );
+
   const SectionTitle = ({ children, subtitle }) => (
     <div className="text-center mb-12">
       {subtitle && <p className="text-[10px] tracking-[0.3em] mb-3 opacity-50 uppercase font-serif">{subtitle}</p>}
@@ -22,8 +44,6 @@ const App = () => {
       </h2>
     </div>
   );
-
-  const LINE_LINK = "https://lin.ee/rlTm2kM";
 
   const LineButton = ({ text = "LINEで相談・予約する", subtext = "空き状況を問い合わせる" }) => (
     <div className="text-center my-12 px-4">
@@ -40,15 +60,9 @@ const App = () => {
     </div>
   );
 
-  // 画像プレースホルダーコンポーネント
-  const ImagePlaceholder = ({ aspect = "aspect-video", label = "Photo" }) => (
-    <div className={`w-full ${aspect} bg-gray-200 flex items-center justify-center text-gray-400 font-serif italic border border-gray-300`}>
-      [Image of {label}]
-    </div>
-  );
-
   return (
     <div style={styles} className="min-h-screen pb-40 selection:bg-[#D7B9B9] selection:text-white leading-relaxed">
+      
       {/* Hero Section */}
       <section className="pt-24 md:pt-40 pb-16 bg-white">
         <div className={`max-w-4xl mx-auto px-6 text-center transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
@@ -60,27 +74,29 @@ const App = () => {
           </div>
           <h1 className="text-4xl md:text-7xl font-serif leading-relaxed md:leading-[1.5] mb-14 tracking-[0.15em] text-[#5D4037] font-extrabold">
             お宮参りを<br />
-            『一生もの』の思い出に.
+            『一生もの』の思い出に。
           </h1>
         </div>
 
         <div className={`max-w-5xl mx-auto px-4 md:px-10 transition-all duration-1000 delay-300 transform ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}>
           <div className="relative rounded-[40px] overflow-hidden shadow-2xl">
-            <ImagePlaceholder aspect="aspect-[4/5] md:aspect-video" label="メインビジュアル：お宮参りの様子" />
+            {IMAGES.hero ? (
+              <img src={IMAGES.hero} alt="Main" className="w-full h-auto object-cover" />
+            ) : (
+              <Placeholder text="メイン写真をここに配置" aspect="aspect-[4/5] md:aspect-video" />
+            )}
           </div>
         </div>
       </section>
 
-      {/* Message Section 1 - 中央揃え */}
+      {/* Message Section - 中央揃え */}
       <section className="py-24 px-6 text-center font-serif">
         <div className="max-w-3xl mx-auto space-y-12">
           <p className="text-lg md:text-2xl leading-loose tracking-[0.1em] text-[#5D4037] font-bold">
             お宮参りは、生後1ヶ月頃の赤ちゃんの<br className="hidden md:block" />
             健やかな成長を願う、大切な節目。
           </p>
-          
           <div className="w-12 h-[1px] bg-[#D7B9B9] mx-auto opacity-50"></div>
-
           <div className="space-y-8 opacity-80 text-sm md:text-base leading-[2.2]">
             <p>
               はじめての育児でバタバタな毎日だけど、<br />
@@ -111,9 +127,7 @@ const App = () => {
                   {reason.icon}
                   {reason.title}
                 </h4>
-                <p className="text-sm leading-loose opacity-80">
-                  {reason.desc}
-                </p>
+                <p className="text-sm leading-loose opacity-80">{reason.desc}</p>
               </div>
             ))}
           </div>
@@ -125,15 +139,15 @@ const App = () => {
         <div className="max-w-5xl mx-auto">
           <SectionTitle subtitle="GALLERY">📸 撮影イメージ</SectionTitle>
           <div className="flex flex-row justify-center gap-2 md:gap-4 mb-12">
-            <div className="w-1/3 rounded-lg md:rounded-2xl overflow-hidden shadow-sm">
-              <ImagePlaceholder aspect="aspect-[3/4]" label="撮影写真 1" />
-            </div>
-            <div className="w-1/3 rounded-lg md:rounded-2xl overflow-hidden shadow-sm">
-              <ImagePlaceholder aspect="aspect-[3/4]" label="撮影写真 2" />
-            </div>
-            <div className="w-1/3 rounded-lg md:rounded-2xl overflow-hidden shadow-sm">
-              <ImagePlaceholder aspect="aspect-[3/4]" label="撮影写真 3" />
-            </div>
+            {[IMAGES.gallery1, IMAGES.gallery2, IMAGES.gallery3].map((src, i) => (
+              <div key={i} className="w-1/3 aspect-[3/4] rounded-lg md:rounded-2xl overflow-hidden shadow-sm">
+                {src ? (
+                  <img src={src} alt={`Gallery ${i}`} className="w-full h-full object-cover" />
+                ) : (
+                  <Placeholder text={`写真 ${i+1}`} aspect="aspect-[3/4]" />
+                )}
+              </div>
+            ))}
           </div>
           <div className="text-center">
             <a 
@@ -159,7 +173,7 @@ const App = () => {
                 人気No.1
               </span>
               <h4 className="text-lg text-center mb-2 font-bold">🌿 スタンダードプラン</h4>
-              <p className="text-[10px] text-center opacity-50 mb-8 tracking-widest text-center">しっかり残したい方へ</p>
+              <p className="text-[10px] text-center opacity-50 mb-8 tracking-widest">しっかり残したい方へ</p>
               <div className="space-y-4 mb-8 text-sm opacity-80 border-b border-[#D7B9B9]/10 pb-8 text-center">
                 <p>・70枚データ納品</p>
                 <p>・自然な瞬間までしっかり撮影</p>
@@ -170,7 +184,7 @@ const App = () => {
             </div>
             <div className="bg-white/70 rounded-[40px] p-8 border border-[#D7B9B9]/10 shadow-sm">
               <h4 className="text-lg text-center mb-2 font-bold">🌿 ライトプラン</h4>
-              <p className="text-[10px] text-center opacity-50 mb-8 tracking-widest text-center">お手軽に残したい方へ</p>
+              <p className="text-[10px] text-center opacity-50 mb-8 tracking-widest">お手軽に残したい方へ</p>
               <div className="space-y-4 mb-8 text-sm opacity-80 border-b border-[#D7B9B9]/10 pb-8 text-center">
                 <p>・30枚データ納品</p>
                 <p>・出張撮影</p>
@@ -207,19 +221,16 @@ const App = () => {
               </div>
             </div>
 
-            {/* Travel Fee Section */}
             <div className="bg-[#FAF5F5] p-8 rounded-3xl text-center mb-8 border border-[#D7B9B9]/30 shadow-inner">
               <p className="text-[10px] mb-3 text-[#8E7070] tracking-[0.3em] font-serif font-bold uppercase">Travel Fee / 出張費</p>
               <p className="text-base mb-2 leading-loose">
                 東区おうちフォトスタジオから1時間圏内<br />
                 通常 <span className="line-through opacity-50">5,500円</span>
               </p>
-              
               <div className="mb-4 flex items-center justify-center gap-2 text-[#8E7070]">
                 <Home size={14} />
                 <p className="text-[11px] font-bold underline decoration-[#D7B9B9]">おうちフォトスタジオで、貸し切り撮影もOK</p>
               </div>
-
               <div className="inline-block bg-white px-6 py-3 rounded-2xl border-2 border-[#D7B9B9] shadow-sm">
                 <p className="text-sm font-bold text-[#8E7070] tracking-widest">
                   ✨ 72時間以内のご予約で <span className="text-xl text-[#D77D7D]">0円</span>
@@ -227,7 +238,7 @@ const App = () => {
               </div>
             </div>
             
-            <div className="space-y-3 text-[10px] opacity-70 flex flex-col items-center text-center">
+            <div className="space-y-3 text-[10px] opacity-70 flex flex-col items-center text-center font-serif">
               <p>※ご予約確定後、1週間以内の事前振り込みをお願いしております。</p>
               <p>※神社への撮影許可（初穂料など）は、お客様自身でご確認・ご負担をお願いいたします。</p>
             </div>
@@ -236,7 +247,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* FAQ Section */}
       <section className="py-24 px-6 bg-white font-serif">
         <div className="max-w-3xl mx-auto">
           <SectionTitle subtitle="FAQ">❓ よくある質問</SectionTitle>
@@ -245,7 +256,7 @@ const App = () => {
               { q: "体調不良・雨の場合は？", a: "無料で延期できます。無理せずご相談ください。" },
               { q: "私服でも大丈夫？", a: "もちろんOKです◎" },
               { q: "赤ちゃんが泣いたら？", a: "その時間も大切な思い出。ペースに合わせて進めます。" },
-              { q: "撮影時間は？", a: "30分〜60分（柔軟に対応）" }
+              { q: "撮影時間は？", a: "30分〜60分（状況に合わせて柔軟に対応）" }
             ].map((item, i) => (
               <div key={i} className="p-6 rounded-2xl bg-[#FAF5F5]/40 border border-[#D7B9B9]/10">
                 <p className="font-bold mb-3 flex items-center gap-3 text-sm text-[#5D4037]">
@@ -258,7 +269,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* Closing */}
+      {/* Closing Section */}
       <section className="py-32 px-6 text-center bg-[#FAF5F5] font-serif">
         <div className="max-w-2xl mx-auto space-y-12">
           <div className="space-y-6 opacity-80 text-sm md:text-base leading-[2.5] tracking-widest">
@@ -281,7 +292,7 @@ const App = () => {
       {/* Sticky Bottom CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-50 p-6 bg-white/80 backdrop-blur-xl border-t border-[#D7B9B9]/20 shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
         <div className="max-w-lg mx-auto">
-          <a href={LINE_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-4 w-full bg-[#06C755] text-white py-5 rounded-full font-bold shadow-xl text-sm tracking-widest">
+          <a href={LINE_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-4 w-full bg-[#06C755] text-white py-5 rounded-full font-bold shadow-xl text-sm tracking-widest transition-transform active:scale-95">
             <MessageCircle size={22} />
             LINEで相談・予約する
           </a>
