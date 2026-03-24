@@ -49,15 +49,6 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .img-placeholder {
-            background-color: #ebdcd9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #9a7e78;
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-        }
     </style>
 </head>
 <body class="antialiased">
@@ -71,9 +62,7 @@
                 お宮参りを<br>
                 <span class="text-accent">『一生もの』</span>の思い出に。
             </h1>
-            <div class="aspect-[4/3] rounded-2xl img-placeholder shadow-inner mb-6">
-                [ お写真が入ります ]
-            </div>
+            <img src="https://i.ibb.co/N2SM7HwW/IMG-7796.jpg" alt="お宮参りメイン写真" class="w-full aspect-[4/3] object-cover rounded-2xl shadow-sm mb-6">
             <p class="text-xs text-accent tracking-widest">noa photo</p>
         </header>
 
@@ -123,7 +112,7 @@
                     </li>
                 </ul>
             </div>
-            <p class="text-center text-xl font-bold tracking-widest">すべて、お任せください。</p>
+            <p class="text-center text-xl font-bold tracking-widest text-textMain">すべて、お任せください。</p>
         </section>
 
         <!-- セクション4: 選ばれる理由 -->
@@ -156,7 +145,7 @@
                     <h3 class="flex items-center gap-2 text-lg font-bold border-b border-accent/30 pb-2 mb-3">
                         <span class="text-accent">04.</span> 着崩れもその場でお直し
                     </h3>
-                    <p class="text-sm leading-relaxed pl-7">抱っこで崩れても、すぐお直し可能。着付けができるカメラマンだから安心です。</p>
+                    <p class="text-sm leading-relaxed pl-7">抱っこで崩れても、すぐお直し可能. 着付けができるカメラマンだから安心です。</p>
                 </div>
             </div>
         </section>
@@ -164,18 +153,30 @@
         <!-- セクション5: ギャラリー -->
         <section class="py-16 px-6 text-center">
             <p class="text-accent text-sm tracking-widest font-bold mb-2">GALLERY</p>
-            <h2 class="text-2xl font-bold mb-8 flex justify-center items-center gap-2">
+            <h2 class="text-2xl font-bold mb-10 flex justify-center items-center gap-2">
                 <i data-lucide="camera" class="text-accent" width="24" height="24"></i>
                 撮影イメージ
             </h2>
             
-            <div class="grid grid-cols-2 gap-4 mb-8">
-                <div class="aspect-square rounded-xl img-placeholder">[赤ちゃんのお写真]</div>
-                <div class="aspect-square rounded-xl img-placeholder">[ご家族のお写真]</div>
-                <div class="col-span-2 aspect-[2/1] rounded-xl img-placeholder">[当日の風景]</div>
+            <div class="grid grid-cols-2 gap-4 mb-12">
+                <!-- 写真1: 赤ちゃん -->
+                <div class="flex flex-col gap-2">
+                    <img src="https://i.ibb.co/qMnDtJgn/MG-4335-Original.jpg" alt="赤ちゃんのお写真" class="w-full aspect-square object-cover rounded-xl shadow-sm">
+                    <p class="text-[10px] text-accent tracking-tighter">赤ちゃんのお写真</p>
+                </div>
+                <!-- 写真2: ご家族 -->
+                <div class="flex flex-col gap-2">
+                    <img src="https://i.ibb.co/NddBm1JP/IMG-7806.jpg" alt="ご家族のお写真" class="w-full aspect-square object-cover rounded-xl shadow-sm">
+                    <p class="text-[10px] text-accent tracking-tighter">ご家族のお写真</p>
+                </div>
+                <!-- 写真3: 当日の風景（ワイド） -->
+                <div class="col-span-2 flex flex-col gap-2">
+                    <img src="https://i.ibb.co/HDpcpYHH/IMG-7798.jpg" alt="当日の風景" class="w-full aspect-[16/9] object-cover rounded-xl shadow-sm">
+                    <p class="text-[10px] text-accent tracking-tighter">当日の風景</p>
+                </div>
             </div>
 
-            <div class="mt-12 p-6 border border-accent/30 rounded-2xl bg-whiteAlpha">
+            <div class="mt-8 p-6 border border-accent/30 rounded-2xl bg-whiteAlpha">
                 <p class="text-sm font-bold tracking-widest mb-4">FOLLOW INSTAGRAM</p>
                 <a href="https://www.instagram.com/noa.photo33/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-textMain rounded-full shadow-sm hover:shadow-md transition duration-300 border border-accent/20">
                     <i data-lucide="instagram" width="20" height="20"></i>
@@ -237,8 +238,12 @@
         <section class="py-16 px-6">
             <h2 class="text-xl font-bold text-center mb-8">オプション</h2>
             
-            <div class="bg-white rounded-2xl p-6 shadow-sm mb-10">
+            <div class="bg-white rounded-2xl p-6 shadow-sm mb-4">
                 <ul class="space-y-4 text-sm">
+                    <li class="flex justify-between items-center border-b border-accent/20 pb-2">
+                        <span>見開きデザインアルバム</span>
+                        <span class="font-bold">22,000円</span>
+                    </li>
                     <li class="flex justify-between items-center border-b border-accent/20 pb-2">
                         <span>ママ着物レンタル</span>
                         <span class="font-bold">22,000円〜</span>
@@ -258,17 +263,19 @@
                 </ul>
             </div>
 
+            <!-- 注意事項 (オプションの下へ移動) -->
+            <div class="text-[10px] md:text-xs text-accent space-y-1 mb-12 px-2 leading-relaxed opacity-80">
+                <p>※ご予約確定後、事前振り込みをお願いしております。</p>
+                <p>※神社への撮影許可は、お客様自身でお願いいたします。</p>
+                <p>※キャンセルポリシー 1か月前から50％、当日・無断100％。</p>
+            </div>
+
             <h2 class="text-xl font-bold text-center mb-6">出張費について</h2>
             <div class="bg-whiteAlpha rounded-2xl p-6 border border-accent/20 text-center">
                 <p class="mb-2">広島市東区戸坂から1時間圏内</p>
-                <p class="mb-4">通常 5,500円</p>
-                <div class="inline-block bg-white text-textMain px-4 py-2 rounded-lg font-bold shadow-sm mb-4">
-                    👉 72時間以内のご予約で <span class="text-accent text-xl">0円</span>
-                </div>
-                
-                <div class="text-xs text-left mt-6 space-y-2 text-accent p-4 bg-white/50 rounded-lg">
-                    <p>※ご予約確定後、事前振り込みをお願いしております。</p>
-                    <p>※神社への撮影許可は、お客様自身でお願いいたします。</p>
+                <p class="mb-4 text-sm">通常 5,500円</p>
+                <div class="inline-block bg-white text-textMain px-6 py-3 rounded-lg font-bold shadow-sm">
+                    👉 72時間以内のご予約で <span class="text-accent text-xl ml-1">0円</span>
                 </div>
             </div>
         </section>
@@ -282,32 +289,32 @@
 
             <div class="space-y-6 mb-16">
                 <!-- Q1 -->
-                <div class="bg-white rounded-xl p-5 shadow-sm">
+                <div class="bg-white rounded-xl p-5 shadow-sm border border-base">
                     <p class="font-bold flex gap-2 mb-2">
-                        <span class="text-accent">Q.</span> 体調不良・雨の場合は？
+                        <span class="text-accent font-serif">Q.</span> 体調不良・雨の場合は？
                     </p>
-                    <p class="text-sm pl-6">無料で延期できます。無理せずご相談ください。</p>
+                    <p class="text-sm pl-6 opacity-90 leading-relaxed">無料で延期できます。無理せずご相談ください。雨の場合は、おうちフォトスタジオでの撮影もできます。</p>
                 </div>
                 <!-- Q2 -->
-                <div class="bg-white rounded-xl p-5 shadow-sm">
+                <div class="bg-white rounded-xl p-5 shadow-sm border border-base">
                     <p class="font-bold flex gap-2 mb-2">
-                        <span class="text-accent">Q.</span> 私服でも大丈夫？
+                        <span class="text-accent font-serif">Q.</span> 私服でも大丈夫？
                     </p>
-                    <p class="text-sm pl-6">もちろんOKです◎</p>
+                    <p class="text-sm pl-6 opacity-90">もちろんOKです◎</p>
                 </div>
                 <!-- Q3 -->
-                <div class="bg-white rounded-xl p-5 shadow-sm">
+                <div class="bg-white rounded-xl p-5 shadow-sm border border-base">
                     <p class="font-bold flex gap-2 mb-2">
-                        <span class="text-accent">Q.</span> 赤ちゃんが泣いたら？
+                        <span class="text-accent font-serif">Q.</span> 赤ちゃんが泣いたら？
                     </p>
-                    <p class="text-sm pl-6">その時間も大切な思い出。ペースに合わせて進めます。</p>
+                    <p class="text-sm pl-6 opacity-90">その時間も大切な思い出。ペースに合わせて進めます。</p>
                 </div>
                 <!-- Q4 -->
-                <div class="bg-white rounded-xl p-5 shadow-sm">
+                <div class="bg-white rounded-xl p-5 shadow-sm border border-base">
                     <p class="font-bold flex gap-2 mb-2">
-                        <span class="text-accent">Q.</span> 撮影時間は？
+                        <span class="text-accent font-serif">Q.</span> 撮影時間は？
                     </p>
-                    <p class="text-sm pl-6">30分〜60分（柔軟に対応）</p>
+                    <p class="text-sm pl-6 opacity-90">30分〜60分（柔軟に対応）</p>
                 </div>
             </div>
 
