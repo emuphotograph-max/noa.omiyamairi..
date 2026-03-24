@@ -47,15 +47,14 @@ const App = () => {
         <div className={`max-w-4xl mx-auto px-6 text-center transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <div className="mb-10">
              <p className="text-[14px] md:text-xl tracking-[0.1em] font-serif text-[#8E7070] font-bold leading-relaxed">
-               広島市　安芸郡府中　廿日市　東広島　など出張撮影<br />
-               <span className="text-[11px] md:text-base opacity-80 font-normal">広島市東区のおうちスタジオで、ゆったり、まったり撮影もできます。</span>
+               広島を中心に神社ロケーション撮影<br />
+               <span className="text-[11px] md:text-base opacity-80 font-normal">おうちフォトスタジオでゆったり撮影もできます。</span>
              </p>
           </div>
           <h1 className="text-4xl md:text-7xl font-serif leading-relaxed md:leading-[1.5] mb-14 tracking-[0.15em] text-[#5D4037] font-extrabold">
             お宮参りを<br />
-            『一生もの』の思い出に。
+            『一生もの』の思い出に.
           </h1>
-          {/* タグを削除したことで、余白を活かしたデザインに変更 */}
         </div>
 
         <div className={`max-w-5xl mx-auto px-4 md:px-10 transition-all duration-1000 delay-300 transform ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}>
@@ -69,13 +68,16 @@ const App = () => {
         </div>
       </section>
 
-      {/* Message Section 1 */}
+      {/* Message Section 1 - 中央揃えに調整 */}
       <section className="py-24 px-6 text-center font-serif">
-        <div className="max-w-2xl mx-auto space-y-10">
-          <p className="text-lg md:text-xl leading-loose tracking-widest border-l-4 border-[#D7B9B9] pl-6 inline-block text-left font-bold text-[#5D4037]">
+        <div className="max-w-3xl mx-auto space-y-12">
+          <p className="text-lg md:text-2xl leading-loose tracking-[0.1em] text-[#5D4037] font-bold">
             お宮参りは、生後1ヶ月頃の赤ちゃんの<br className="hidden md:block" />
-            <br />健やかな成長を願う、大切な節目。
+            健やかな成長を願う、大切な節目。
           </p>
+          
+          <div className="w-12 h-[1px] bg-[#D7B9B9] mx-auto opacity-50"></div>
+
           <div className="space-y-8 opacity-80 text-sm md:text-base leading-[2.2]">
             <p>
               はじめての育児でバタバタな毎日だけど、<br />
@@ -84,11 +86,9 @@ const App = () => {
             <p className="text-lg text-[#8E7070] font-bold">
               ママもお着物で、赤ちゃんと一緒に<br />
               「はじめての晴れの日」を迎えませんか？<br />
-              赤ちゃんだけでなく、パパもママも主役、<br />
-              自然な撮影をさせていただきます。<br />
-          
+              赤ちゃんだけでなく、パパもママも主役の<br />
+              自然な撮影をさせていただきます。
             </p>
-
           </div>
           <LineButton subtext="はじめての撮影も、すべてサポートいたします" />
         </div>
@@ -189,7 +189,7 @@ const App = () => {
                 <span className="font-bold">22,000円〜 <span className="text-[10px] text-[#8E7070] ml-2 font-normal"></span></span>
               </div>
               <div className="flex justify-between items-center py-4 border-b border-[#FAF5F5]">
-                <span>👘 着付け（二重太鼓）</span>
+                <span>👘 着付け（お太鼓）</span>
                 <span className="font-bold">7,700円</span>
               </div>
               <div className="flex justify-between items-center py-4 border-b border-[#FAF5F5]">
@@ -227,9 +227,8 @@ const App = () => {
             </div>
             
             <div className="space-y-3 text-[10px] opacity-70 flex flex-col items-center text-center">
-              <p>※ご予約確定後、1週間以内の事前振り込みをお願いしております。</p>
-              <p>※神社への撮影許可は、お客様自身でご確認・ご負担をお願いいたします。</p>
-               <p>※キャンセルポリシー1か月前から50%、当日、無断100％頂戴します。</p>
+              <p>※ご予約確定後、1週間以内の事前振り込みをお願いします。</p>
+              <p>※神社への撮影許可は、お客様自身でご確認をお願いします。</p>
             </div>
           </div>
           <LineButton text="相談・予約をしてみる" subtext="24時間以内に返信いたします" />
